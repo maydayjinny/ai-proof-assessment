@@ -661,6 +661,9 @@ def show_input_page():
           demonstrate. We will generate <strong>3 AI-resistant assessment alternatives</strong>,
           each with ready-to-use student instructions you can copy straight into your syllabus.
         </p>
+        <p>
+          Created by. Jinny Hwang | Instructional Designer
+        </p>
       </div>
     </div>
     """, unsafe_allow_html=True)
