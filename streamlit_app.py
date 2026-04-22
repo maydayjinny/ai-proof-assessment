@@ -660,7 +660,7 @@ def show_input_page():
           This app leverages dozens of <strong>rigorously derived, evidence-based AI-resistant strategies</strong> extracted from research literature and higher education resources. It transforms your input into customized assessment alternatives designed to drive authentic student performance and meaningfully limit AI misuse, each with ready-to-use instructions you can copy directly into your syllabus.
         </p>
         <p>
-          💡 <strong>Created by. Jinny Hwang | Instructional Designer</strong>
+          💡 <strong>Created by. Jinny Hwang  |  Instructional Designer</strong>
         </p>
       </div>
     </div>
