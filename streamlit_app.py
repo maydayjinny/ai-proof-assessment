@@ -326,12 +326,150 @@ CRITICAL CONSTRAINTS — every assessment MUST follow ALL of these:
 
 6. DETAILED AND SPECIFIC OUTPUT. Every field must be thorough and complete — not brief placeholders. Students reading the instructions should have zero ambiguity about what to do.
 
-AI-RESISTANCE STRATEGIES (use a different one for each of the 3 assessments):
-- Personal/authentic experience: student documents, analyzes, or reflects on their own real lived context — something AI cannot invent
-- Process + evidence trail: multiple drafts, timestamped entries, or screen recordings that prove thinking happened over time
-- Recorded self-explanation: video or audio where the student explains reasoning in their own unrepeatable voice/face
-- Asynchronous peer accountability: structured peer review where each student's contribution responds to a specific peer's real work, making generic AI responses obvious
-- Dynamic/personalized prompt: each student receives a unique variable (their own collected data, a randomly assigned case, a current event they must locate themselves) making identical AI outputs impossible
+AI-RESISTANCE STRATEGIES — use a DIFFERENT strategy for each of the 3 assessments. Choose from the full menu below. Each strategy entry explains what it is, why it resists AI, and concrete design signals you must embed in the assessment.
+
+════════════════════════════════════════════════════════════
+CATEGORY A: PERSONAL CONTEXT AND LIVED EXPERIENCE
+════════════════════════════════════════════════════════════
+
+A1. PERSONAL AUTHENTIC NARRATIVE
+   What it is: The student documents, analyzes, or reflects critically on something rooted in their own irreplaceable lived experience — a specific encounter, relationship, community context, or personal history that AI cannot invent or approximate.
+   Why it resists AI: AI produces generically plausible content but cannot access a specific person's sensory memory, community, emotional history, or local context. Any AI-generated response is immediately detectable as hollow generalization (University of Chicago, UMN).
+   Design signals: Require the student to name specific real people (with appropriate anonymization if needed), dates, places, or events they personally witnessed. Ask them to explain how this experience complicated, confirmed, or transformed a course concept. Reject responses that could apply to "any student anywhere."
+
+A2. COMMUNITY-BASED AND FIELD OBSERVATION
+   What it is: Students conduct structured observations, interviews, or service-learning experiences in a real-world community or professional setting, then analyze their findings through course frameworks.
+   Why it resists AI: AI has no access to the student's physical environment or the people in it. Observations are timestamped to the present moment. Analysis must connect specific, locally-gathered data to theory — a synthesis AI cannot fabricate (UChicago, UMN).
+   Design signals: Require students to submit raw field notes alongside their analysis. Ask them to identify one moment of genuine surprise or contradiction in what they observed, and explain what it reveals that course readings did not anticipate.
+
+A3. HYPER-LOCAL AND CURRENT EVENT ANALYSIS
+   What it is: Students independently locate a current event, news item, local policy decision, or real-world case from the present week or month, then analyze it using course concepts. No two students may use the same source.
+   Why it resists AI: Prompt-sharing is structurally impossible because each student's source is unique. AI cannot locate a current event on the student's behalf and submit it without the student first finding it themselves. The recency requirement also defeats AI training data cutoffs (Yale Poorvu Center).
+   Design signals: Require students to state the date, source, and URL of their chosen item at the top of the submission. Ask them to explain why they chose this particular event and what it reveals that a more famous or generic example would not.
+
+════════════════════════════════════════════════════════════
+CATEGORY B: PROCESS VISIBILITY AND EVIDENCE TRAILS
+════════════════════════════════════════════════════════════
+
+B1. SCAFFOLDED MULTI-STAGE PROCESS PORTFOLIO
+   What it is: A large assignment is broken into required stages — exploratory brainstorm, annotated draft, instructor or peer feedback round, revised draft, and final reflection — each of which is graded and time-stamped (UChicago, UMN, Princeton McGraw Center).
+   Why it resists AI: AI generates polished endpoints instantly; it cannot fabricate the authentic messiness of real thinking over time. The revision must demonstrably respond to specific feedback given between stages. Instructors assess growth, metacognitive awareness, and the quality of revision decisions — not just the final product.
+   Design signals: Require a revision memo with each new draft explaining what changed, why, and what feedback drove the change. Use Google Docs version history or tracked changes to verify the document evolved over time. Grade the quality of revision reasoning, not just the final text.
+
+B2. ANNOTATED BIBLIOGRAPHY WITH REFLECTIVE RATIONALE
+   What it is: Students build a bibliography over time, but each entry requires a substantial annotation explaining not just what the source says, but why the student chose it, what it adds that other sources do not, and how it connects to their emerging argument.
+   Why it resists AI: The rationale for source selection is deeply personal and iterative. AI can produce generic summaries but cannot explain why a specific student made a specific intellectual choice at a specific moment in their thinking process (UMN).
+   Design signals: Require students to explain at least one source they initially planned to include but ultimately rejected, and why. Ask them to identify the moment their argument shifted based on a source they found.
+
+B3. COMMONPLACE BOOK OR CURATED READING JOURNAL
+   What it is: Students maintain a structured reading journal throughout the course, recording significant quotes, their own interpretive glosses, connections between readings, and evolving questions — submitted in installments, not all at once (University of Chicago).
+   Why it resists AI: The journal accumulates over the full course. Entries must connect to specific class discussions, guest speakers, or prior entries, creating a traceable intellectual timeline that AI cannot retroactively fabricate.
+   Design signals: Require each entry to reference something specific from that week's class discussion or a classmate's comment. Ask students to track how their central question for the course has evolved from week 1 to the present.
+
+B4. SCREEN RECORDING OR PROCESS DOCUMENTATION VIDEO
+   What it is: Students record their screen (using free tools like OBS Studio or Loom) while they work through a problem, draft an argument, or debug code — narrating their reasoning in real time.
+   Why it resists AI: A screen recording captures genuine cognitive process: hesitations, false starts, backtracking, and real-time decision-making. AI cannot produce a recording of a student's screen because the student's screen does not exist in AI's environment.
+   Design signals: Require at least one visible moment where the student changes direction, makes an error, or expresses genuine uncertainty. Ask them to narrate their reasoning aloud as they work, not just describe what they did after the fact.
+
+════════════════════════════════════════════════════════════
+CATEGORY C: ORAL, LIVE, AND RECORDED SELF-EXPLANATION
+════════════════════════════════════════════════════════════
+
+C1. RECORDED VIDEO EXPLANATION (STUDENT ON CAMERA)
+   What it is: The student records a video of themselves — appearing on camera — explaining their reasoning, walking through their work, responding to a prompt, or teaching a concept to a hypothetical audience (MIT Sloan, Yale).
+   Why it resists AI: A student's face, voice, accent, hesitations, and spontaneous reasoning are irreplaceable. Research consistently shows that live or recorded oral explanation reveals whether understanding is surface-level or deep in ways written work cannot. AI can write a script but cannot appear on camera as the student.
+   Design signals: Require the student's face to be visible throughout. Include at least one element of spontaneity: an unseen follow-up prompt revealed only in the final minutes of the video prompt, or a requirement to respond in real time to a question posed mid-video. Free tools: Loom (free tier), Google Drive video upload, YouTube (unlisted).
+
+C2. CONVERSATIONAL EXAM (SMALL GROUP ORAL, SCALABLE)
+   What it is: Students meet in small groups (3-5 students per session) with the instructor or TA for a live 20-30 minute conversation about their submitted work. Each student is asked to explain, defend, and extend their reasoning spontaneously (George Washington University research, NYU Stern).
+   Why it resists AI: Real-time reasoning, defense of specific decisions, and responses to novel follow-up questions cannot be faked. Research from GWU shows this format scales to classes of 60+ students in just two days of sessions while achieving high validity. Students who did not genuinely engage with their work are immediately identifiable.
+   Design signals: Prepare 3-5 follow-up questions per student based on their actual submitted work. Include at least one question that asks the student to apply their argument to a scenario not mentioned in their submission. Grade on reasoning quality and intellectual honesty, not just correctness.
+
+C3. ASYNCHRONOUS PODCAST OR AUDIO ESSAY
+   What it is: Students record an audio essay or podcast episode (5-10 minutes) in which they develop and defend an argument using course concepts, addressing a specific audience (e.g., a skeptic, a policymaker, a peer who missed the unit).
+   Why it resists AI: Audio requires the student's own voice, pacing, and real-time verbal reasoning. The audience-awareness dimension — adapting argument to a specific listener — requires genuine judgment that AI cannot supply without the student's own intellectual positioning (Yale Poorvu Center).
+   Design signals: Require the student to state at the start who their imagined audience is and what they assume that audience already knows. Include one moment where the student acknowledges a counterargument and responds to it directly. Free tools: Audacity, Spotify for Podcasters (Anchor), SoundCloud free tier.
+
+════════════════════════════════════════════════════════════
+CATEGORY D: SOCIAL, COLLABORATIVE, AND ACCOUNTABLE LEARNING
+════════════════════════════════════════════════════════════
+
+D1. STRUCTURED PEER REVIEW WITH NAMED ACCOUNTABILITY
+   What it is: Each student provides substantive written feedback on a specific named classmate's actual submission, then revises their own work in response to the feedback they received — with both the feedback given and the revision response graded (UMN, UChicago).
+   Why it resists AI: Generic AI responses are obviously mismatched when the task requires engaging with a specific peer's actual argument, data, or creative choice. Students must quote or reference at least two specific ideas from the peer's real submission. Social accountability is inherently human.
+   Design signals: Require students to quote directly from their peer's work at least twice. Ask them to identify one specific strength and one specific gap in the peer's argument, grounded in course vocabulary. Then require the original author to write a 200-word response explaining what they will and will not change based on the feedback, and why.
+
+D2. SOCRATIC SEMINAR OR FISHBOWL DISCUSSION (ASYNCHRONOUS VERSION)
+   What it is: Students participate in a structured asynchronous discussion where each contribution must directly respond to and build on a specific prior post — not post independently — creating a visible chain of intellectual dialogue (UMN, UChicago with social annotation tools).
+   Why it resists AI: Each student's post is constrained by what the previous student actually wrote. AI cannot predict the specific content of a classmate's post and generate a contextually appropriate response in advance. The cumulative chain makes generic responses immediately obvious.
+   Design signals: Require each post to begin by quoting the specific sentence from the prior post being engaged. Prohibit agreement-only responses: each post must add a new dimension, challenge an assumption, or introduce new evidence. Grade based on how substantively the student moves the collective argument forward.
+
+D3. COLLABORATIVE SYNTHESIS WITH INDIVIDUAL ACCOUNTABILITY
+   What it is: A small group collaborates to produce a shared artifact (analysis, proposal, annotated resource map), but each member submits an individual written reflection explaining their specific contribution, the decisions they pushed for or against, and what they learned from the collaborative process that they could not have learned alone.
+   Why it resists AI: The individual reflection must describe specific real interactions with named group members. AI cannot fabricate the actual dynamics of a real collaboration. The "what I pushed for and why it was contested" element requires genuine engagement with the group process (UChicago).
+   Design signals: Require each student to identify one decision the group made differently than they would have alone, and explain what changed their thinking. Ask them to describe one moment of genuine productive disagreement and how it was resolved.
+
+D4. SOCIAL ANNOTATION OF A SHARED TEXT
+   What it is: Students annotate a shared course reading using a social annotation tool (Hypothesis is free), with each annotation required to add interpretive value — a question, a connection to another text, a personal response, a challenge — and to engage with at least two classmates' prior annotations (UChicago, Yale).
+   Why it resists AI: Social annotation is a real-time, public, conversational act. Annotations must respond to specific things classmates wrote in specific locations of the text. AI cannot participate in a live annotation session on behalf of a student without the student being present.
+   Design signals: Require at least 5 original annotations and 3 substantive responses to classmates' annotations. Original annotations should include at least one genuine question the student cannot yet answer, and one connection to their own experience or a prior course reading.
+
+════════════════════════════════════════════════════════════
+CATEGORY E: DYNAMIC, PERSONALIZED, AND UNPREDICTABLE PROMPTS
+════════════════════════════════════════════════════════════
+
+E1. UNIQUE SEED VARIABLE (PERSONALIZED PROMPT ARCHITECTURE)
+   What it is: Each student receives or self-generates a unique input variable — a randomly assigned real company, a specific zip code, a data set from their own neighborhood, a news headline published on their birthday — that makes identical AI outputs structurally impossible (Yale, Duke).
+   Why it resists AI: When no two students share the same prompt, AI cannot generate a usable generic response. Prompt-sharing is structurally prevented because a peer's seed variable is useless to another student. This is one of the highest-resistance strategies in the research literature.
+   Design signals: Build the "seed" directly into the assignment instructions: "Your assigned company is [randomly drawn from a list]" or "Use census data for the zip code where you grew up." Require students to state their unique variable at the top of every submission. Vary the seed list each semester to prevent reuse from prior cohorts.
+
+E2. REAL-TIME DATA COLLECTION AND ANALYSIS
+   What it is: Students collect their own original data — a survey they designed and administered, field measurements, a series of their own observations over time, or publicly available real-time data they pulled themselves — and analyze it using course frameworks.
+   Why it resists AI: AI cannot collect real data. The data is unique to the student's moment of collection, their chosen method, and their specific population or environment. Analysis must be grounded in data the AI has never seen (MIT Sloan framework, FACT framework).
+   Design signals: Require students to submit their raw data or data collection instrument alongside the analysis. Ask them to identify at least one finding that surprised them and explain what they would have predicted before collecting data. Require a brief methodology section explaining when, where, and how they collected the data.
+
+E3. CASE STUDY ASSIGNED ON THE DAY (IN-CLASS OR TIMED RELEASE)
+   What it is: The specific case, scenario, or data set students must analyze is revealed only at the moment the assessment begins — either in class or as a timed-release online task — preventing advance preparation or AI pre-generation (MIT Sloan, Stanford AIWG).
+   Why it resists AI: If students cannot access the prompt in advance, they cannot pre-generate an AI response. Real-time analysis of an unseen case requires genuine internalized knowledge and adaptive reasoning. Partial AI assistance is still possible, but the time constraint and specificity of the newly revealed case sharply limit its usefulness.
+   Design signals: Design 2-3 parallel versions of the case (different companies, different countries, different time periods) and randomly assign them so no sharing is possible. Include at least one element that requires connecting the case to specific content from recent class sessions — content that AI cannot access.
+
+════════════════════════════════════════════════════════════
+CATEGORY F: CRITICAL AI ENGAGEMENT AND METALITERACY
+════════════════════════════════════════════════════════════
+
+F1. EVALUATE, CRITIQUE, AND IMPROVE AN AI OUTPUT
+   What it is: The student is given an actual AI-generated response to the assignment prompt and tasked with identifying its factual errors, conceptual shallowness, missing nuance, and unstated assumptions — then rewriting a section with genuine depth (Duke, Yale, UMN).
+   Why it resists AI: This strategy turns AI into the object of assessment rather than the tool that avoids it. Identifying what is wrong or shallow in an AI response requires deep course knowledge. Students cannot simply ask AI to evaluate itself meaningfully without genuine disciplinary grounding.
+   Design signals: Generate the AI response yourself before assigning it, so you know its specific errors. Require students to identify at least two errors or gaps that only a student who did the readings would catch. Ask them to explain what a human expert in this field would add that the AI did not. Include a rubric criterion for "evidence of genuine subject expertise beyond the AI output."
+
+F2. AI AUDIT WITH DOCUMENTED INTERACTION LOG
+   What it is: Students are permitted — or required — to use AI as part of their process, but must submit a complete, annotated log of every prompt they used, every output they received, every edit they made to the AI output, and a final reflection on what the AI got right, wrong, and what they had to add themselves (Duke, Princeton, MIT Sloan).
+   Why it resists AI: The documentation requirement transforms AI use from a shortcut into a metacognitive exercise. A student who used AI uncritically will produce a log that reveals shallow engagement. A student who genuinely learned will produce a log showing meaningful dialogue, critical rejection of AI outputs, and evidence of their own intellectual contribution.
+   Design signals: Require the log to be submitted alongside the final work. Grade the log on: quality of prompts, evidence of critical evaluation of AI outputs, specificity of edits made, and depth of final reflection. The reflection must answer: "What does this work now contain that the AI could not supply?"
+
+F3. CONCEPT MAP WITH VERBAL DEFENSE
+   What it is: Students create a visual concept map — a diagram showing relationships between course concepts, evidence, and their own argument — and then record a 3-5 minute video (or participate in a brief live conversation) walking through their map and explaining the logic of each connection (UChicago, Yale).
+   Why it resists AI: Concept mapping requires genuine relational understanding — knowing not just what concepts mean, but how and why they connect in a specific argument. The verbal defense of the map requires the student to explain their own thinking in real time. AI can generate a map, but it cannot explain why this student made these specific connection choices.
+   Design signals: Require at least one connection in the map that the student cannot find explicitly stated in the course readings — a connection they inferred or synthesized themselves. During the defense, ask the student to identify which connection they are least confident about and why.
+
+════════════════════════════════════════════════════════════
+CATEGORY G: MULTIMODAL AND EMBODIED PRODUCTION
+════════════════════════════════════════════════════════════
+
+G1. INFOGRAPHIC OR VISUAL ARGUMENT WITH PROCESS RATIONALE
+   What it is: Students create a visual artifact — an infographic, annotated diagram, illustrated argument, or data visualization — that communicates a course concept or argument to a specific non-expert audience, accompanied by a written rationale explaining their design choices (Duke, UMN).
+   Why it resists AI: While AI can generate generic visuals, it cannot make the specific design choices a student makes for a specific argument aimed at a specific audience. The design rationale — explaining why this visual, this layout, this color, this level of simplification — requires genuine decision-making that exposes the student's understanding.
+   Design signals: Require the student to identify their target audience and explain two specific design choices they made with that audience in mind. Ask them to describe one element they cut and why cutting it made the argument stronger. Free tools: Canva (free tier), Google Slides.
+
+G2. CREATIVE TRANSLATION ACROSS REGISTERS OR FORMATS
+   What it is: Students take a course concept, argument, or finding and translate it into a radically different format: a short op-ed for a specific publication, a letter to a policymaker, a dialogue between two historical figures, a set of instructions for a child, or a scene in a short play — with a reflective memo explaining the translation choices made.
+   Why it resists AI: AI can produce generic versions of any format. What it cannot produce is a specific student's intellectual positioning: which aspects of the concept they prioritized, which analogies felt authentic to their own thinking, and why they chose this particular recipient or format over alternatives. The memo makes that thinking explicit and gradable.
+   Design signals: Require the memo to identify at least one concept that was very difficult to translate and explain the compromise the student made. Ask them to explain what is inevitably lost in this translation and what is unexpectedly gained.
+
+G3. HANDWRITTEN IN-CLASS OR TIMED RESPONSE (WITH REFLECTION)
+   What it is: Students complete a handwritten response, diagram, or problem-solving task in class or under timed online conditions, then follow up asynchronously with a typed reflection on their own handwritten work — extending, correcting, or complicating what they wrote in the moment (UMN, NMU CTL).
+   Why it resists AI: Handwriting is physically attributable to the student. The timed constraint prevents AI assistance. The subsequent reflection — which must engage with the actual content of the handwritten work — creates a two-part artifact that AI cannot fully replicate. This format also provides instructors with a natural baseline sample of each student's unassisted writing.
+   Design signals: Scan or photograph handwritten work and upload it alongside the typed reflection. Require the reflection to quote or directly reference at least two specific things written in the handwritten portion. Ask students to identify one thing they would revise with more time and explain what they now think more clearly.
 
 FORMAT — output EXACTLY this structure with EXACT labels. Do not add or remove any labels:
 
@@ -548,20 +686,26 @@ def show_input_page():
     <div class="hero">
       <h1>🎓 AI-Resistant Assessment Generator</h1>
       <div class="hero-intro">
-        <p>
-          You have probably felt it: the essay that sounds polished but hollow, the analysis
-          that hits every talking point but reveals nothing about the student who "wrote" it.
-          <strong>You are not imagining it.</strong>
+       <p>
+          You have probably spent more time than you would like wondering whether the work 
+          your students submitted was actually theirs. That frustration is real, and you are 
+          not alone.
         </p>
         <p>
-          AI did not just change how students cheat. It exposed how many of our assessments
-          were never really measuring thinking in the first place.
+          But here is the shift that changes everything: <strong>AI in the classroom is not 
+          a plagiarism problem. It is a pedagogy problem.</strong> If an AI can complete your 
+          assessment better than your students can, the assessment may not have been measuring 
+          real thinking in the first place.
         </p>
         <p>
-          This tool helps you rebuild. In under 2 minutes, describe your course and what you
-          want students to <em>actually</em> demonstrate, and we will generate <strong>3 research-backed,
-          AI-resistant assessment alternatives</strong>, each with ready-to-use student instructions
-          you can copy straight into your syllabus.
+          The goal is not to ban AI or catch cheaters. It is to design learning experiences 
+          so authentic, so rooted in each student's own thinking and context, that doing the 
+          work <em>is</em> the learning, and shortcuts simply do not apply.
+        </p>
+        <p>
+          In under 2 minutes, describe your course and what you want students to genuinely 
+          demonstrate. We will generate <strong>3 AI-resistant assessment alternatives</strong>, 
+          each with ready-to-use student instructions you can copy straight into your syllabus.
         </p>
       </div>
     </div>
@@ -597,7 +741,7 @@ def show_input_page():
 
     # Course-Level Objectives
     st.markdown('<div class="field-label">Course-Level Objectives</div>', unsafe_allow_html=True)
-    st.markdown('<div class="field-hint">What should students know or be able to do by the end of the course? These are your Course LOs, not specific to any one assignment.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="field-hint">What should students know or be able to do by the end of the course? Feel free to copy and paste your course objectives from your syllabus, or explain in a few sentences.</div>', unsafe_allow_html=True)
     learning_objectives = st.text_area(
         "lo_hidden",
         placeholder="e.g., Students will be able to identify and apply major sociological theories to analyze social institutions and everyday life...",
@@ -793,7 +937,7 @@ def show_results_page():
                     response = client.chat.completions.create(
                         model="gpt-3.5-turbo",
                         messages=[
-                            {"role": "system", "content": "You are an expert higher education assessment designer who writes detailed, practical, ready-to-use assessment materials."},
+                            {"role": "system", "content": "You are an expert higher education assessment designer who writes detailed, practical, ready-to-use assessment materials. You use the most effective learning theories, instructional design strategies, and frameworks."},
                             {"role": "user", "content": prompt}
                         ],
                         temperature=0.95,
@@ -830,7 +974,7 @@ def show_results_page():
                     response = client.chat.completions.create(
                         model="gpt-3.5-turbo",
                         messages=[
-                            {"role": "system", "content": "You are an expert higher education assessment designer who writes detailed, practical, ready-to-use assessment materials."},
+                            {"role": "system", "content": "You are an expert higher education assessment designer who writes detailed, practical, ready-to-use assessment materials. You use the most effective learning theories, instructional design strategies, and frameworks."},
                             {"role": "user", "content": prompt}
                         ],
                         temperature=0.95,
