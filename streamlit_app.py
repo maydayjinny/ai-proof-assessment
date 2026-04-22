@@ -657,7 +657,7 @@ def show_input_page():
           work <em>is</em> the learning, and shortcuts simply do not apply.
         </p>
         <p>
-          This app leverages dozens of <strong>rigorously derived, evidence-based AI-resistant strategies</strong> extracted from research literature and higher education resources. It transforms your input into customized assessment alternatives designed to drive authentic student performance and meaningfully limit AI misuse, each with ready-to-use instructions you can copy directly into your syllabus.
+          This app leverages dozens of <strong>rigorously derived, evidence-based AI-resistant strategies extracted from research literature and higher education resources</strong>. It transforms your input into customized assessment alternatives designed to drive authentic student performance and meaningfully limit AI misuse, each with ready-to-use instructions you can copy directly into your syllabus.
         </p>
         <p>
           💡 <strong>Created by. Jinny Hwang  |  Instructional Designer</strong>
