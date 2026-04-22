@@ -734,7 +734,7 @@ def show_input_page():
                             {"role": "user", "content": prompt}
                         ],
                         temperature=0.82,
-                        max_tokens=6000,
+                        max_tokens=4000,
                     )
                     raw_output = response.choices[0].message.content
                     st.session_state.results   = raw_output
@@ -797,7 +797,7 @@ def show_results_page():
                             {"role": "user", "content": prompt}
                         ],
                         temperature=0.95,
-                        max_tokens=6000,
+                        max_tokens=4000,
                     )
                     st.session_state.results = response.choices[0].message.content
                     st.rerun()
@@ -834,7 +834,7 @@ def show_results_page():
                             {"role": "user", "content": prompt}
                         ],
                         temperature=0.95,
-                        max_tokens=6000,
+                        max_tokens=4000,
                     )
                     st.session_state.results = response.choices[0].message.content
                     st.rerun()
