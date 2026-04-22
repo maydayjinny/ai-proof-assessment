@@ -652,7 +652,7 @@ def show_input_page():
           real thinking in the first place.
         </p>
         <p>
-          The goal is not to ban AI or catch cheaters. It is to design authentic learning experiences that are rooted in each student's own thinking and context, that doing the work <em>is</em> the learning.
+          The goal is not to ban AI or catch cheaters. It is to design authentic learning experiences rooted in each student's own thinking and context, where doing the work <em>is</em> the learning.
         </p>
         <p>
           This app leverages dozens of <strong>rigorously derived, evidence-based AI-resistant strategies extracted from research literature and higher education resources</strong>. It transforms your input into customized assessment alternatives designed to drive authentic student performance and meaningfully limit AI misuse, each with ready-to-use instructions you can copy directly into your syllabus.
