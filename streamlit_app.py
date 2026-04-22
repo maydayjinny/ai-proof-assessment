@@ -908,11 +908,24 @@ def show_input_page():
 
 def show_results_page():
     # Scroll to top when results page loads
-    st.markdown("""
+st.markdown("""
     <script>
-        window.scrollTo(0, 0);
-        // Also try via parent (Streamlit iframe)
-        try { window.parent.scrollTo(0, 0); } catch(e) {}
+        (function() {
+            function scrollUp() {
+                window.scrollTo({top: 0, behavior: 'instant'});
+                try {
+                    window.parent.document.querySelector('section.main')
+                        .scrollTo({top: 0, behavior: 'instant'});
+                } catch(e) {}
+                try {
+                    window.parent.document.querySelector('.main')
+                        .scrollTo({top: 0, behavior: 'instant'});
+                } catch(e) {}
+            }
+            scrollUp();
+            setTimeout(scrollUp, 100);
+            setTimeout(scrollUp, 300);
+        })();
     </script>
     """, unsafe_allow_html=True)
 
