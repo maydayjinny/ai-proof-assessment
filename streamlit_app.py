@@ -19,24 +19,21 @@ if "form_data" not in st.session_state:
     st.session_state.form_data = {}
 
 # ── Custom CSS ───────────────────────────────────────
-# FIX #3: Increased base font-size from 16px → 18.4px (×1.15)
 st.markdown("""
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@300;400;600;700&display=swap');
 
   html, body, [class*="css"] {
     font-family: 'Source Sans 3', sans-serif;
-    font-size: 18.4px; /* +15% from 16px */
+    font-size: 18.4px;
   }
 
-  /* Constrain wide layout to a comfortable reading width */
   .block-container {
     max-width: 860px !important;
     padding-left: 2rem !important;
     padding-right: 2rem !important;
   }
 
-  /* ── Hero ── */
   .hero {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
     border-radius: 20px;
@@ -62,7 +59,6 @@ st.markdown("""
     color: #e2c97e;
   }
 
-  /* ── Section headers ── */
   .section-header {
     font-family: 'Playfair Display', serif;
     color: #0f3460;
@@ -74,8 +70,6 @@ st.markdown("""
     letter-spacing: -0.01em;
   }
 
-  /* ── Required box: removed border/background to eliminate the blank box look ── */
-  /* FIX #6: removed the border and background from required-box so no empty rounded box appears */
   .required-box {
     padding: 0;
     margin-bottom: 1.5rem;
@@ -83,9 +77,8 @@ st.markdown("""
     border: none;
   }
 
-  /* FIX #7: Larger field labels */
   .field-label {
-    font-size: 1.25rem;   /* was 1.08rem */
+    font-size: 1.25rem;
     font-weight: 700;
     color: #1a1a2e;
     margin-bottom: 0.15rem;
@@ -104,7 +97,6 @@ st.markdown("""
     line-height: 1.5;
   }
 
-  /* ── Output card ── */
   .output-card {
     background: #f8f7f4;
     border-left: 5px solid #e2c97e;
@@ -126,7 +118,6 @@ st.markdown("""
     line-height: 1.65;
   }
 
-  /* FIX #4: Renamed strategy pill and restyled for faculty-friendly look */
   .ai-resistance-block {
     background: #fff8e6;
     border: 1.5px solid #e2c97e;
@@ -224,7 +215,6 @@ st.markdown("""
     font-size: 1rem;
   }
 
-  /* Instruction list items */
   .inst-list li {
     margin-bottom: 0.55rem;
     line-height: 1.7;
@@ -239,7 +229,6 @@ st.markdown("""
 #  HELPER FUNCTIONS
 # ════════════════════════════════════════════════════
 
-# Strategy → faculty-friendly explanation mapping
 STRATEGY_EXPLANATIONS = {
     "personal": (
         "Personal / Local Context",
@@ -261,21 +250,32 @@ STRATEGY_EXPLANATIONS = {
         "Unpredictable / Dynamic Prompts",
         "When prompts include real-time data, randomly assigned variables, or in-class reveals, AI cannot prepare a polished response in advance. This strategy turns the element of surprise into an assessment feature, rewarding adaptive thinking over rehearsed outputs."
     ),
+    "ai_critique": (
+        "Critical AI Engagement",
+        "By asking students to evaluate, critique, and improve an AI-generated response, this strategy turns AI into the object of assessment rather than the tool that bypasses it. Identifying what is shallow or wrong in an AI output requires genuine disciplinary knowledge that cannot be outsourced back to AI."
+    ),
+    "multimodal": (
+        "Multimodal and Embodied Production",
+        "Requiring students to produce a visual, audio, or physically-grounded artifact — annotated diagrams, infographics, screen recordings, or audio essays — creates work that text-based AI cannot fully replicate, especially when the student's own voice, hands, or local environment must appear in the output."
+    ),
 }
 
 def detect_strategy_key(strategy_text):
-    """Map the model's strategy label to one of our explanation keys."""
     s = strategy_text.lower()
-    if any(k in s for k in ["personal", "local", "community", "experience", "real-time"]):
+    if any(k in s for k in ["personal", "local", "community", "experience", "real-time", "narrative", "field", "current event"]):
         return "personal"
-    if any(k in s for k in ["process", "portfolio", "draft", "journal", "reflection"]):
+    if any(k in s for k in ["process", "portfolio", "draft", "journal", "reflection", "scaffold", "commonplace", "screen record"]):
         return "process"
-    if any(k in s for k in ["oral", "live", "viva", "presentation", "recorded"]):
+    if any(k in s for k in ["oral", "live", "viva", "presentation", "recorded", "video", "audio", "podcast", "conversational"]):
         return "oral"
-    if any(k in s for k in ["collaborat", "peer", "group"]):
+    if any(k in s for k in ["collaborat", "peer", "group", "social annotation", "fishbowl", "socratic"]):
         return "collaborative"
-    if any(k in s for k in ["unpredictable", "dynamic", "random", "in-class", "reveal"]):
+    if any(k in s for k in ["unpredictable", "dynamic", "random", "in-class", "reveal", "seed", "personalized prompt", "real-time data", "timed"]):
         return "dynamic"
+    if any(k in s for k in ["critique", "audit", "ai output", "evaluate ai", "concept map"]):
+        return "ai_critique"
+    if any(k in s for k in ["infographic", "visual", "multimodal", "creative translation", "handwritten", "embodied"]):
+        return "multimodal"
     return None
 
 
@@ -326,11 +326,9 @@ CRITICAL CONSTRAINTS — every assessment MUST follow ALL of these:
 
 6. DETAILED AND SPECIFIC OUTPUT. Every field must be thorough and complete — not brief placeholders. Students reading the instructions should have zero ambiguity about what to do.
 
-AI-RESISTANCE STRATEGIES — use a DIFFERENT strategy for each of the 3 assessments. Choose from the full menu below. Each strategy entry explains what it is, why it resists AI, and concrete design signals you must embed in the assessment.
+AI-RESISTANCE STRATEGIES — use a DIFFERENT strategy for each of the 3 assessments. Choose from the full research-backed menu below. Each entry explains what it is, why it resists AI, and concrete design signals you must embed in the assessment.
 
-════════════════════════════════════════════════════════════
 CATEGORY A: PERSONAL CONTEXT AND LIVED EXPERIENCE
-════════════════════════════════════════════════════════════
 
 A1. PERSONAL AUTHENTIC NARRATIVE
    What it is: The student documents, analyzes, or reflects critically on something rooted in their own irreplaceable lived experience — a specific encounter, relationship, community context, or personal history that AI cannot invent or approximate.
@@ -347,9 +345,7 @@ A3. HYPER-LOCAL AND CURRENT EVENT ANALYSIS
    Why it resists AI: Prompt-sharing is structurally impossible because each student's source is unique. AI cannot locate a current event on the student's behalf and submit it without the student first finding it themselves. The recency requirement also defeats AI training data cutoffs (Yale Poorvu Center).
    Design signals: Require students to state the date, source, and URL of their chosen item at the top of the submission. Ask them to explain why they chose this particular event and what it reveals that a more famous or generic example would not.
 
-════════════════════════════════════════════════════════════
 CATEGORY B: PROCESS VISIBILITY AND EVIDENCE TRAILS
-════════════════════════════════════════════════════════════
 
 B1. SCAFFOLDED MULTI-STAGE PROCESS PORTFOLIO
    What it is: A large assignment is broken into required stages — exploratory brainstorm, annotated draft, instructor or peer feedback round, revised draft, and final reflection — each of which is graded and time-stamped (UChicago, UMN, Princeton McGraw Center).
@@ -368,21 +364,19 @@ B3. COMMONPLACE BOOK OR CURATED READING JOURNAL
 
 B4. SCREEN RECORDING OR PROCESS DOCUMENTATION VIDEO
    What it is: Students record their screen (using free tools like OBS Studio or Loom) while they work through a problem, draft an argument, or debug code — narrating their reasoning in real time.
-   Why it resists AI: A screen recording captures genuine cognitive process: hesitations, false starts, backtracking, and real-time decision-making. AI cannot produce a recording of a student's screen because the student's screen does not exist in AI's environment.
+   Why it resists AI: A screen recording captures genuine cognitive process: hesitations, false starts, backtracking, and real-time decision-making. AI cannot produce a recording of a student's screen.
    Design signals: Require at least one visible moment where the student changes direction, makes an error, or expresses genuine uncertainty. Ask them to narrate their reasoning aloud as they work, not just describe what they did after the fact.
 
-════════════════════════════════════════════════════════════
 CATEGORY C: ORAL, LIVE, AND RECORDED SELF-EXPLANATION
-════════════════════════════════════════════════════════════
 
 C1. RECORDED VIDEO EXPLANATION (STUDENT ON CAMERA)
    What it is: The student records a video of themselves — appearing on camera — explaining their reasoning, walking through their work, responding to a prompt, or teaching a concept to a hypothetical audience (MIT Sloan, Yale).
    Why it resists AI: A student's face, voice, accent, hesitations, and spontaneous reasoning are irreplaceable. Research consistently shows that live or recorded oral explanation reveals whether understanding is surface-level or deep in ways written work cannot. AI can write a script but cannot appear on camera as the student.
-   Design signals: Require the student's face to be visible throughout. Include at least one element of spontaneity: an unseen follow-up prompt revealed only in the final minutes of the video prompt, or a requirement to respond in real time to a question posed mid-video. Free tools: Loom (free tier), Google Drive video upload, YouTube (unlisted).
+   Design signals: Require the student's face to be visible throughout. Include at least one element of spontaneity: an unseen follow-up prompt revealed only in the final minutes, or a requirement to respond in real time to a question posed mid-video. Free tools: Loom (free tier), Google Drive video upload, YouTube (unlisted).
 
 C2. CONVERSATIONAL EXAM (SMALL GROUP ORAL, SCALABLE)
    What it is: Students meet in small groups (3-5 students per session) with the instructor or TA for a live 20-30 minute conversation about their submitted work. Each student is asked to explain, defend, and extend their reasoning spontaneously (George Washington University research, NYU Stern).
-   Why it resists AI: Real-time reasoning, defense of specific decisions, and responses to novel follow-up questions cannot be faked. Research from GWU shows this format scales to classes of 60+ students in just two days of sessions while achieving high validity. Students who did not genuinely engage with their work are immediately identifiable.
+   Why it resists AI: Real-time reasoning, defense of specific decisions, and responses to novel follow-up questions cannot be faked. Research from GWU shows this format scales to classes of 60+ students in just two days of sessions while achieving high validity.
    Design signals: Prepare 3-5 follow-up questions per student based on their actual submitted work. Include at least one question that asks the student to apply their argument to a scenario not mentioned in their submission. Grade on reasoning quality and intellectual honesty, not just correctness.
 
 C3. ASYNCHRONOUS PODCAST OR AUDIO ESSAY
@@ -390,23 +384,21 @@ C3. ASYNCHRONOUS PODCAST OR AUDIO ESSAY
    Why it resists AI: Audio requires the student's own voice, pacing, and real-time verbal reasoning. The audience-awareness dimension — adapting argument to a specific listener — requires genuine judgment that AI cannot supply without the student's own intellectual positioning (Yale Poorvu Center).
    Design signals: Require the student to state at the start who their imagined audience is and what they assume that audience already knows. Include one moment where the student acknowledges a counterargument and responds to it directly. Free tools: Audacity, Spotify for Podcasters (Anchor), SoundCloud free tier.
 
-════════════════════════════════════════════════════════════
 CATEGORY D: SOCIAL, COLLABORATIVE, AND ACCOUNTABLE LEARNING
-════════════════════════════════════════════════════════════
 
 D1. STRUCTURED PEER REVIEW WITH NAMED ACCOUNTABILITY
    What it is: Each student provides substantive written feedback on a specific named classmate's actual submission, then revises their own work in response to the feedback they received — with both the feedback given and the revision response graded (UMN, UChicago).
-   Why it resists AI: Generic AI responses are obviously mismatched when the task requires engaging with a specific peer's actual argument, data, or creative choice. Students must quote or reference at least two specific ideas from the peer's real submission. Social accountability is inherently human.
+   Why it resists AI: Generic AI responses are obviously mismatched when the task requires engaging with a specific peer's actual argument, data, or creative choice. Students must quote or reference at least two specific ideas from the peer's real submission.
    Design signals: Require students to quote directly from their peer's work at least twice. Ask them to identify one specific strength and one specific gap in the peer's argument, grounded in course vocabulary. Then require the original author to write a 200-word response explaining what they will and will not change based on the feedback, and why.
 
 D2. SOCRATIC SEMINAR OR FISHBOWL DISCUSSION (ASYNCHRONOUS VERSION)
    What it is: Students participate in a structured asynchronous discussion where each contribution must directly respond to and build on a specific prior post — not post independently — creating a visible chain of intellectual dialogue (UMN, UChicago with social annotation tools).
-   Why it resists AI: Each student's post is constrained by what the previous student actually wrote. AI cannot predict the specific content of a classmate's post and generate a contextually appropriate response in advance. The cumulative chain makes generic responses immediately obvious.
-   Design signals: Require each post to begin by quoting the specific sentence from the prior post being engaged. Prohibit agreement-only responses: each post must add a new dimension, challenge an assumption, or introduce new evidence. Grade based on how substantively the student moves the collective argument forward.
+   Why it resists AI: Each student's post is constrained by what the previous student actually wrote. AI cannot predict the specific content of a classmate's post and generate a contextually appropriate response in advance.
+   Design signals: Require each post to begin by quoting the specific sentence from the prior post being engaged. Prohibit agreement-only responses: each post must add a new dimension, challenge an assumption, or introduce new evidence.
 
 D3. COLLABORATIVE SYNTHESIS WITH INDIVIDUAL ACCOUNTABILITY
    What it is: A small group collaborates to produce a shared artifact (analysis, proposal, annotated resource map), but each member submits an individual written reflection explaining their specific contribution, the decisions they pushed for or against, and what they learned from the collaborative process that they could not have learned alone.
-   Why it resists AI: The individual reflection must describe specific real interactions with named group members. AI cannot fabricate the actual dynamics of a real collaboration. The "what I pushed for and why it was contested" element requires genuine engagement with the group process (UChicago).
+   Why it resists AI: The individual reflection must describe specific real interactions with named group members. AI cannot fabricate the actual dynamics of a real collaboration (UChicago).
    Design signals: Require each student to identify one decision the group made differently than they would have alone, and explain what changed their thinking. Ask them to describe one moment of genuine productive disagreement and how it was resolved.
 
 D4. SOCIAL ANNOTATION OF A SHARED TEXT
@@ -414,62 +406,51 @@ D4. SOCIAL ANNOTATION OF A SHARED TEXT
    Why it resists AI: Social annotation is a real-time, public, conversational act. Annotations must respond to specific things classmates wrote in specific locations of the text. AI cannot participate in a live annotation session on behalf of a student without the student being present.
    Design signals: Require at least 5 original annotations and 3 substantive responses to classmates' annotations. Original annotations should include at least one genuine question the student cannot yet answer, and one connection to their own experience or a prior course reading.
 
-════════════════════════════════════════════════════════════
 CATEGORY E: DYNAMIC, PERSONALIZED, AND UNPREDICTABLE PROMPTS
-════════════════════════════════════════════════════════════
 
 E1. UNIQUE SEED VARIABLE (PERSONALIZED PROMPT ARCHITECTURE)
    What it is: Each student receives or self-generates a unique input variable — a randomly assigned real company, a specific zip code, a data set from their own neighborhood, a news headline published on their birthday — that makes identical AI outputs structurally impossible (Yale, Duke).
    Why it resists AI: When no two students share the same prompt, AI cannot generate a usable generic response. Prompt-sharing is structurally prevented because a peer's seed variable is useless to another student. This is one of the highest-resistance strategies in the research literature.
-   Design signals: Build the "seed" directly into the assignment instructions: "Your assigned company is [randomly drawn from a list]" or "Use census data for the zip code where you grew up." Require students to state their unique variable at the top of every submission. Vary the seed list each semester to prevent reuse from prior cohorts.
+   Design signals: Build the "seed" directly into the assignment instructions: "Your assigned company is [randomly drawn from a list]" or "Use census data for the zip code where you grew up." Require students to state their unique variable at the top of every submission.
 
 E2. REAL-TIME DATA COLLECTION AND ANALYSIS
    What it is: Students collect their own original data — a survey they designed and administered, field measurements, a series of their own observations over time, or publicly available real-time data they pulled themselves — and analyze it using course frameworks.
-   Why it resists AI: AI cannot collect real data. The data is unique to the student's moment of collection, their chosen method, and their specific population or environment. Analysis must be grounded in data the AI has never seen (MIT Sloan framework, FACT framework).
-   Design signals: Require students to submit their raw data or data collection instrument alongside the analysis. Ask them to identify at least one finding that surprised them and explain what they would have predicted before collecting data. Require a brief methodology section explaining when, where, and how they collected the data.
+   Why it resists AI: AI cannot collect real data. The data is unique to the student's moment of collection, their chosen method, and their specific population or environment (MIT Sloan framework, FACT framework).
+   Design signals: Require students to submit their raw data or data collection instrument alongside the analysis. Ask them to identify at least one finding that surprised them and explain what they would have predicted before collecting data.
 
-E3. CASE STUDY ASSIGNED ON THE DAY (IN-CLASS OR TIMED RELEASE)
-   What it is: The specific case, scenario, or data set students must analyze is revealed only at the moment the assessment begins — either in class or as a timed-release online task — preventing advance preparation or AI pre-generation (MIT Sloan, Stanford AIWG).
-   Why it resists AI: If students cannot access the prompt in advance, they cannot pre-generate an AI response. Real-time analysis of an unseen case requires genuine internalized knowledge and adaptive reasoning. Partial AI assistance is still possible, but the time constraint and specificity of the newly revealed case sharply limit its usefulness.
-   Design signals: Design 2-3 parallel versions of the case (different companies, different countries, different time periods) and randomly assign them so no sharing is possible. Include at least one element that requires connecting the case to specific content from recent class sessions — content that AI cannot access.
+E3. CASE STUDY ASSIGNED ON THE DAY (TIMED RELEASE)
+   What it is: The specific case, scenario, or data set students must analyze is revealed only at the moment the assessment begins — as a timed-release online task — preventing advance preparation or AI pre-generation (MIT Sloan, Stanford AIWG).
+   Why it resists AI: If students cannot access the prompt in advance, they cannot pre-generate an AI response. Real-time analysis of an unseen case requires genuine internalized knowledge and adaptive reasoning.
+   Design signals: Design 2-3 parallel versions of the case (different companies, different countries, different time periods) and randomly assign them so no sharing is possible. Include at least one element that requires connecting the case to specific content from recent course sessions.
 
-════════════════════════════════════════════════════════════
 CATEGORY F: CRITICAL AI ENGAGEMENT AND METALITERACY
-════════════════════════════════════════════════════════════
 
 F1. EVALUATE, CRITIQUE, AND IMPROVE AN AI OUTPUT
    What it is: The student is given an actual AI-generated response to the assignment prompt and tasked with identifying its factual errors, conceptual shallowness, missing nuance, and unstated assumptions — then rewriting a section with genuine depth (Duke, Yale, UMN).
-   Why it resists AI: This strategy turns AI into the object of assessment rather than the tool that avoids it. Identifying what is wrong or shallow in an AI response requires deep course knowledge. Students cannot simply ask AI to evaluate itself meaningfully without genuine disciplinary grounding.
-   Design signals: Generate the AI response yourself before assigning it, so you know its specific errors. Require students to identify at least two errors or gaps that only a student who did the readings would catch. Ask them to explain what a human expert in this field would add that the AI did not. Include a rubric criterion for "evidence of genuine subject expertise beyond the AI output."
+   Why it resists AI: This strategy turns AI into the object of assessment rather than the tool that avoids it. Identifying what is wrong or shallow in an AI response requires deep course knowledge that cannot be outsourced back to AI.
+   Design signals: Generate the AI response yourself before assigning it, so you know its specific errors. Require students to identify at least two errors or gaps that only a student who did the readings would catch. Ask them to explain what a human expert in this field would add that the AI did not.
 
 F2. AI AUDIT WITH DOCUMENTED INTERACTION LOG
    What it is: Students are permitted — or required — to use AI as part of their process, but must submit a complete, annotated log of every prompt they used, every output they received, every edit they made to the AI output, and a final reflection on what the AI got right, wrong, and what they had to add themselves (Duke, Princeton, MIT Sloan).
-   Why it resists AI: The documentation requirement transforms AI use from a shortcut into a metacognitive exercise. A student who used AI uncritically will produce a log that reveals shallow engagement. A student who genuinely learned will produce a log showing meaningful dialogue, critical rejection of AI outputs, and evidence of their own intellectual contribution.
+   Why it resists AI: The documentation requirement transforms AI use from a shortcut into a metacognitive exercise. A student who used AI uncritically will produce a log that reveals shallow engagement.
    Design signals: Require the log to be submitted alongside the final work. Grade the log on: quality of prompts, evidence of critical evaluation of AI outputs, specificity of edits made, and depth of final reflection. The reflection must answer: "What does this work now contain that the AI could not supply?"
 
 F3. CONCEPT MAP WITH VERBAL DEFENSE
-   What it is: Students create a visual concept map — a diagram showing relationships between course concepts, evidence, and their own argument — and then record a 3-5 minute video (or participate in a brief live conversation) walking through their map and explaining the logic of each connection (UChicago, Yale).
-   Why it resists AI: Concept mapping requires genuine relational understanding — knowing not just what concepts mean, but how and why they connect in a specific argument. The verbal defense of the map requires the student to explain their own thinking in real time. AI can generate a map, but it cannot explain why this student made these specific connection choices.
-   Design signals: Require at least one connection in the map that the student cannot find explicitly stated in the course readings — a connection they inferred or synthesized themselves. During the defense, ask the student to identify which connection they are least confident about and why.
+   What it is: Students create a visual concept map — a diagram showing relationships between course concepts, evidence, and their own argument — and then record a 3-5 minute video walking through their map and explaining the logic of each connection (UChicago, Yale).
+   Why it resists AI: Concept mapping requires genuine relational understanding — knowing not just what concepts mean, but how and why they connect in a specific argument. The verbal defense requires the student to explain their own thinking in real time.
+   Design signals: Require at least one connection in the map that the student cannot find explicitly stated in the course readings — a connection they inferred or synthesized themselves. Ask the student to identify which connection they are least confident about and why.
 
-════════════════════════════════════════════════════════════
 CATEGORY G: MULTIMODAL AND EMBODIED PRODUCTION
-════════════════════════════════════════════════════════════
 
 G1. INFOGRAPHIC OR VISUAL ARGUMENT WITH PROCESS RATIONALE
    What it is: Students create a visual artifact — an infographic, annotated diagram, illustrated argument, or data visualization — that communicates a course concept or argument to a specific non-expert audience, accompanied by a written rationale explaining their design choices (Duke, UMN).
-   Why it resists AI: While AI can generate generic visuals, it cannot make the specific design choices a student makes for a specific argument aimed at a specific audience. The design rationale — explaining why this visual, this layout, this color, this level of simplification — requires genuine decision-making that exposes the student's understanding.
+   Why it resists AI: While AI can generate generic visuals, it cannot make the specific design choices a student makes for a specific argument aimed at a specific audience. The design rationale exposes the student's genuine understanding.
    Design signals: Require the student to identify their target audience and explain two specific design choices they made with that audience in mind. Ask them to describe one element they cut and why cutting it made the argument stronger. Free tools: Canva (free tier), Google Slides.
 
 G2. CREATIVE TRANSLATION ACROSS REGISTERS OR FORMATS
    What it is: Students take a course concept, argument, or finding and translate it into a radically different format: a short op-ed for a specific publication, a letter to a policymaker, a dialogue between two historical figures, a set of instructions for a child, or a scene in a short play — with a reflective memo explaining the translation choices made.
-   Why it resists AI: AI can produce generic versions of any format. What it cannot produce is a specific student's intellectual positioning: which aspects of the concept they prioritized, which analogies felt authentic to their own thinking, and why they chose this particular recipient or format over alternatives. The memo makes that thinking explicit and gradable.
+   Why it resists AI: AI can produce generic versions of any format. What it cannot produce is a specific student's intellectual positioning: which aspects of the concept they prioritized, which analogies felt authentic to their own thinking, and why they chose this particular recipient or format over alternatives.
    Design signals: Require the memo to identify at least one concept that was very difficult to translate and explain the compromise the student made. Ask them to explain what is inevitably lost in this translation and what is unexpectedly gained.
-
-G3. HANDWRITTEN IN-CLASS OR TIMED RESPONSE (WITH REFLECTION)
-   What it is: Students complete a handwritten response, diagram, or problem-solving task in class or under timed online conditions, then follow up asynchronously with a typed reflection on their own handwritten work — extending, correcting, or complicating what they wrote in the moment (UMN, NMU CTL).
-   Why it resists AI: Handwriting is physically attributable to the student. The timed constraint prevents AI assistance. The subsequent reflection — which must engage with the actual content of the handwritten work — creates a two-part artifact that AI cannot fully replicate. This format also provides instructors with a natural baseline sample of each student's unassisted writing.
-   Design signals: Scan or photograph handwritten work and upload it alongside the typed reflection. Require the reflection to quote or directly reference at least two specific things written in the handwritten portion. Ask students to identify one thing they would revise with more time and explain what they now think more clearly.
 
 FORMAT — output EXACTLY this structure with EXACT labels. Do not add or remove any labels:
 
@@ -496,7 +477,6 @@ Do not add any text outside the ### markers above."""
 
 
 def parse_assessments(raw_text):
-    """Split raw output into individual assessment blocks using ###ASSESSMENT_START### markers."""
     blocks = []
     parts = raw_text.split("###ASSESSMENT_START###")
     for part in parts[1:]:
@@ -508,12 +488,6 @@ def parse_assessments(raw_text):
 
 
 def extract_field(block, start_label, end_labels):
-    """
-    Extract content after 'start_label:' up to the first matching end_label.
-    Handles both 'LABEL: inline text' and 'LABEL:\\nmultiline text' patterns.
-    end_labels should be full label strings like 'FOCUS', 'STEP 1', etc.
-    """
-    # Try matching 'LABEL:' at start of a line or inline
     import re
     pattern = re.compile(r'(?:^|\n)' + re.escape(start_label) + r':\s*', re.IGNORECASE)
     m = pattern.search(block)
@@ -538,16 +512,10 @@ def extract_between(block, start_marker, end_marker):
 
 
 def extract_steps(block):
-    """
-    Extract all STEP N: lines from a block, returning a list of step text strings.
-    Handles multi-line steps: content continues until the next STEP or end of block.
-    """
     import re
-    # Find all step positions
     step_pattern = re.compile(r'(?:^|\n)STEP\s*\d+\s*:\s*', re.IGNORECASE)
     matches = list(step_pattern.finditer(block))
     if not matches:
-        # Fallback: try "Step N:" at start of lines
         step_pattern = re.compile(r'(?:^|\n)Step\s*\d+\s*:\s*', re.IGNORECASE)
         matches = list(step_pattern.finditer(block))
     steps = []
@@ -555,7 +523,6 @@ def extract_steps(block):
         start = m.end()
         end = matches[i+1].start() if i+1 < len(matches) else len(block)
         text = block[start:end].strip()
-        # Remove trailing blank lines
         text = re.sub(r'\n\s*\n.*', '', text, flags=re.DOTALL).strip()
         if text:
             steps.append(text)
@@ -573,12 +540,10 @@ def render_assessment(block, idx):
 
     purpose = extract_field(student_block, "PURPOSE", ["OVERVIEW", "FOCUS", "STEP 1", "STEP1"])
     overview_section = extract_field(student_block, "OVERVIEW", ["STEP 1", "STEP1", "INSTRUCTIONS"])
-    # Fallback to FOCUS for backward compatibility
     if not overview_section:
         overview_section = extract_field(student_block, "FOCUS", ["STEP 1", "STEP1", "INSTRUCTIONS"])
-    steps   = extract_steps(student_block)
+    steps = extract_steps(student_block)
 
-    # Fallback: if student_block extraction failed, try from main block
     if not purpose:
         purpose = extract_field(block, "PURPOSE", ["OVERVIEW", "FOCUS", "STEP 1"])
     if not overview_section:
@@ -586,7 +551,6 @@ def render_assessment(block, idx):
     if not steps:
         steps = extract_steps(block)
 
-    # Build AI-resistance block
     strategy_key = detect_strategy_key(strategy)
     if strategy_key and strategy_key in STRATEGY_EXPLANATIONS:
         strategy_name, strategy_edu = STRATEGY_EXPLANATIONS[strategy_key]
@@ -594,7 +558,6 @@ def render_assessment(block, idx):
         strategy_name = strategy.split(":")[0].strip() if ":" in strategy else strategy[:80]
         strategy_edu  = strategy
 
-    # ── Card header ──
     st.markdown(f"""
     <div style="background:#f8f7f4; border-left:5px solid #e2c97e; border-radius:0 16px 16px 0;
                 padding:1.6rem 1.8rem 0.8rem 1.8rem; margin-bottom:0;
@@ -611,7 +574,6 @@ def render_assessment(block, idx):
     </div>
     """, unsafe_allow_html=True)
 
-    # ── AI-resistance block ──
     st.markdown(f"""
     <div style="background:#fff8e6; border:1.5px solid #e2c97e;
                 border-top:none; border-radius:0 0 10px 10px;
@@ -626,10 +588,9 @@ def render_assessment(block, idx):
     </div>
     """, unsafe_allow_html=True)
 
-    # ── Sample Student Instructions box — ONE call, all content inline ──
     purpose_safe  = purpose.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;")
     overview_safe = overview_section.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;")
-    steps_html   = "".join(
+    steps_html = "".join(
         f'<li style="margin-bottom:0.65rem; line-height:1.75; color:#222; font-size:1rem;">'
         f'{s.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;")}</li>'
         for s in steps
@@ -641,31 +602,25 @@ def render_assessment(block, idx):
     <div style="background:#fff; border:1.5px solid rgba(15,52,96,0.15);
                 border-top:3px solid #0f3460; border-radius:8px;
                 padding:1.5rem 1.8rem 1.6rem 1.8rem; margin-bottom:0.7rem;">
-
       <div style="background:#e2c97e; color:#1a1a2e; font-size:0.78rem; font-weight:700;
                   padding:0.3rem 0.9rem; border-radius:5px; letter-spacing:0.06em;
                   text-transform:uppercase; margin-bottom:1.4rem; display:inline-block;">
         Sample Student Instructions
       </div>
-
       <div style="font-size:0.78rem; font-weight:700; color:#0f3460; letter-spacing:0.1em;
                   text-transform:uppercase; margin-bottom:0.45rem; margin-top:0.2rem;">Purpose</div>
       <p style="color:#222; font-size:1rem; line-height:1.8; margin:0 0 1.3rem 0;">{purpose_safe}</p>
-
       <div style="font-size:0.78rem; font-weight:700; color:#0f3460; letter-spacing:0.1em;
                   text-transform:uppercase; margin-bottom:0.45rem;">Overview</div>
       <p style="color:#222; font-size:1rem; line-height:1.8; margin:0 0 1.3rem 0;">{overview_safe}</p>
-
       <div style="font-size:0.78rem; font-weight:700; color:#0f3460; letter-spacing:0.1em;
                   text-transform:uppercase; margin-bottom:0.7rem;">Step-by-Step Instructions</div>
       <ol style="margin:0; padding-left:1.5rem; color:#222;">
         {steps_html}
       </ol>
-
     </div>
     """, unsafe_allow_html=True)
 
-    # ── Grading tip ──
     st.markdown(f"""
     <div style="background:#f0f7ff; border-left:3px solid #4a90d9; border-radius:0 6px 6px 0;
                 padding:0.7rem 1.1rem; margin-bottom:2.2rem;
@@ -681,42 +636,37 @@ def render_assessment(block, idx):
 
 def show_input_page():
 
-    # Hero
     st.markdown("""
     <div class="hero">
       <h1>🎓 AI-Resistant Assessment Generator</h1>
       <div class="hero-intro">
-       <p>
-          You have probably spent more time than you would like wondering whether the work 
-          your students submitted was actually theirs. That frustration is real, and you are 
+        <p>
+          You have probably spent more time than you would like wondering whether the work
+          your students submitted was actually theirs. That frustration is real, and you are
           not alone.
         </p>
         <p>
-          But here is the shift that changes everything: <strong>AI in the classroom is not 
-          a plagiarism problem. It is a pedagogy problem.</strong> If an AI can complete your 
-          assessment better than your students can, the assessment may not have been measuring 
+          But here is the shift that changes everything: <strong>AI in the classroom is not
+          a plagiarism problem. It is a pedagogy problem.</strong> If an AI can complete your
+          assessment better than your students can, the assessment may not have been measuring
           real thinking in the first place.
         </p>
         <p>
-          The goal is not to ban AI or catch cheaters. It is to design learning experiences 
-          so authentic, so rooted in each student's own thinking and context, that doing the 
+          The goal is not to ban AI or catch cheaters. It is to design learning experiences
+          so authentic, so rooted in each student's own thinking and context, that doing the
           work <em>is</em> the learning, and shortcuts simply do not apply.
         </p>
         <p>
-          In under 2 minutes, describe your course and what you want students to genuinely 
-          demonstrate. We will generate <strong>3 AI-resistant assessment alternatives</strong>, 
+          In under 2 minutes, describe your course and what you want students to genuinely
+          demonstrate. We will generate <strong>3 AI-resistant assessment alternatives</strong>,
           each with ready-to-use student instructions you can copy straight into your syllabus.
         </p>
       </div>
     </div>
     """, unsafe_allow_html=True)
 
-    # ── REQUIRED FIELDS ──────────────────────────────
     st.markdown('<div class="section-header">Required Information</div>', unsafe_allow_html=True)
 
-    # FIX #6: removed the wrapping required-box div (no more empty rounded box)
-
-    # Subject
     st.markdown('<div class="field-label">Subject or Topic of the Course</div>', unsafe_allow_html=True)
     st.markdown('<div class="field-hint">Describe the subject in plain language, not just a course code. For example, write "Introduction to Psychology" rather than "PSYC 101".</div>', unsafe_allow_html=True)
     subject = st.text_input(
@@ -725,7 +675,6 @@ def show_input_page():
         label_visibility="collapsed"
     )
 
-    # Course Level
     st.markdown('<div class="field-label">Course Level</div>', unsafe_allow_html=True)
     st.markdown('<div class="field-hint">Select the level closest to your course. This shapes the cognitive complexity of the suggested assessments.</div>', unsafe_allow_html=True)
     level = st.selectbox(
@@ -739,7 +688,6 @@ def show_input_page():
         label_visibility="collapsed"
     )
 
-    # Course-Level Objectives
     st.markdown('<div class="field-label">Course-Level Objectives</div>', unsafe_allow_html=True)
     st.markdown('<div class="field-hint">What should students know or be able to do by the end of the course? Feel free to copy and paste your course objectives from your syllabus, or explain in a few sentences.</div>', unsafe_allow_html=True)
     learning_objectives = st.text_area(
@@ -749,7 +697,6 @@ def show_input_page():
         label_visibility="collapsed"
     )
 
-    # Assessment Goals
     st.markdown('<div class="field-label">Assessment Goals</div>', unsafe_allow_html=True)
     st.markdown('<div class="field-hint">What do you want this specific assessment to measure or reveal? Focus on the skills and thinking you are trying to evaluate, not just the content topic.</div>', unsafe_allow_html=True)
     assessment_goal = st.text_area(
@@ -759,7 +706,6 @@ def show_input_page():
         label_visibility="collapsed"
     )
 
-    # Assessment Scope
     st.markdown('<div class="field-label">Assessment Scope and Time Investment</div>', unsafe_allow_html=True)
     st.markdown('<div class="field-hint">How much time and weight should this assessment carry? Knowing this helps generate something appropriately sized for your course.</div>', unsafe_allow_html=True)
     assessment_scope = st.selectbox(
@@ -776,7 +722,6 @@ def show_input_page():
         label_visibility="collapsed"
     )
 
-    # ── OPTIONAL FIELDS ──────────────────────────────
     st.markdown('<div class="section-header">Optional: More Context</div>', unsafe_allow_html=True)
     st.markdown("These fields help tailor the output further, but are not required to generate results.", unsafe_allow_html=True)
     st.markdown("")
@@ -844,15 +789,14 @@ def show_input_page():
 
     all_tools = selected_tools + ([custom_tool.strip()] if custom_tool.strip() else [])
 
-    # ── Generate Button ───────────────────────────────
     st.markdown("")
     generate_btn = st.button("✨  Generate 3 AI-Resistant Assessments", type="primary", use_container_width=True)
 
     if generate_btn:
         missing = []
-        if not subject.strip():              missing.append("Subject or Topic")
-        if not learning_objectives.strip():  missing.append("Course-Level Objectives")
-        if not assessment_goal.strip():      missing.append("Assessment Goals")
+        if not subject.strip():             missing.append("Subject or Topic")
+        if not learning_objectives.strip(): missing.append("Course-Level Objectives")
+        if not assessment_goal.strip():     missing.append("Assessment Goals")
 
         if missing:
             st.error(f"⚠️ Please fill in the required fields: **{', '.join(missing)}**")
@@ -889,7 +833,7 @@ def show_input_page():
                 except Exception as e:
                     err_msg = str(e)
                     if "api_key" in err_msg.lower() or "authentication" in err_msg.lower():
-                        st.error("🔑 Invalid API key. Please check the OPENAI_API_KEY value at the top of streamlit_app.py.")
+                        st.error("🔑 Invalid API key. Please check the OPENAI_API_KEY value in Streamlit Secrets.")
                     elif "quota" in err_msg.lower() or "billing" in err_msg.lower():
                         st.error("💳 OpenAI usage limit reached. Please check your OpenAI account billing.")
                     else:
@@ -907,8 +851,8 @@ def show_input_page():
 # ════════════════════════════════════════════════════
 
 def show_results_page():
-    # Scroll to top when results page loads
-st.markdown("""
+    # Improved scroll-to-top with multiple attempts to handle Streamlit render timing
+    st.markdown("""
     <script>
         (function() {
             function scrollUp() {
@@ -961,7 +905,7 @@ st.markdown("""
                 except Exception as e:
                     st.error(f"❌ Error: {str(e)}")
 
-    st.markdown("Each option below includes **student-ready instructions** you can copy and paste directly into your syllabus or LMS.")
+    st.markdown("Each option below includes **student-ready instructions** you can copy and paste directly into your syllabus or course platform.")
     st.markdown("")
 
     raw    = st.session_state.results
