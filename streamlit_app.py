@@ -646,7 +646,7 @@ def show_input_page():
           not alone.
         </p>
         <p>
-          But here is the shift that changes everything: <strong>AI in the classroom is not
+          But here is the perspective shift: <strong>AI in the classroom is not
           a plagiarism problem. It is a pedagogy problem.</strong> If an AI can complete your
           assessment better than your students can, the assessment may not have been measuring
           real thinking in the first place.
@@ -657,12 +657,10 @@ def show_input_page():
           work <em>is</em> the learning, and shortcuts simply do not apply.
         </p>
         <p>
-          In under 2 minutes, describe your course and what you want students to genuinely
-          demonstrate. We will generate <strong>3 AI-resistant assessment alternatives</strong>,
-          each with ready-to-use student instructions you can copy straight into your syllabus.
+          This app is built on 20 rigorously derived, evidence-based AI-resistant strategies extracted from research literature and higher education practice. It transforms your input into customized assessment alternatives designed to drive authentic student performance and meaningfully limit AI misuse, each with ready-to-use instructions you can copy directly into your syllabus.
         </p>
         <p>
-          Created by. Jinny Hwang | Instructional Designer
+          💡 <strong>Created by. Jinny Hwang | Instructional Designer</strong>
         </p>
       </div>
     </div>
